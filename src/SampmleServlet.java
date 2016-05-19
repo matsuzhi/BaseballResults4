@@ -34,8 +34,9 @@ public class SampmleServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		System.out.println("<html><head></head><body>");
+		out.println("<html><head></head><body>");
 		try{
+			//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			Driver d = (Driver)Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 			//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			String strConn = "jdbc:sqlserver://ybl49nyf62.database.windows.net:1433;database=BallGame;";
@@ -48,7 +49,7 @@ public class SampmleServlet extends HttpServlet {
 			Statement stmt = con.createStatement();
 
 			String SQL = "SELECT * FROM dbo.T001_ユーザーマスター";
-			
+
 			ResultSet rs = stmt.executeQuery(SQL);
 
 			while(rs.next()){
@@ -59,12 +60,12 @@ public class SampmleServlet extends HttpServlet {
 		}
 		catch(Exception e){
 			//
-			out.println(e);
+			e.printStackTrace(out);
 		}
 		finally{
 			out.println("</body></html>");
 		}
-		
+
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		/*String[] luckArray = {"Very Good", "Good", "Bad"};
