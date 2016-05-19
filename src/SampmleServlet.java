@@ -46,7 +46,7 @@ public class SampmleServlet extends HttpServlet {
 		out.println("<head>");
 		out.println("<title>スッキリ占い</title>");
 		out.println("</head>");
-		out.println("<p>" + today + "の運勢は" + luck + "です。</p>");
+		out.println("<p>" + today + "の運勢は" + luck + "です。zzz</p>");
 		out.println("</body>");
 		out.println("</html>");
 
