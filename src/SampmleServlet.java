@@ -41,7 +41,8 @@ public class SampmleServlet extends HttpServlet {
 			String strConn = "jdbc:sqlserver://ybl49nyf62.database.windows.net:1433;database=BallGame;";
 			String strUser = "user=matsuzhi;";
 			String strPass = "password=AshnYuk2";
-			String connUrl = strConn + strUser + strPass;
+			//String connUrl = strConn + strUser + strPass;
+			String connUrl = "jdbc:sqlserver://ybl49nyf62.database.windows.net:1433;database=BallGame;user=matsuzhi@ybl49nyf62;password=AshnYuk2;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 			Connection con = d.connect(connUrl, new Properties());
 
 			Statement stmt = con.createStatement();
