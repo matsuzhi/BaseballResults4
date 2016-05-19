@@ -34,16 +34,16 @@ public class SampmleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
 			Driver d = (Driver)Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
-
+			//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			String strConn = "jdbc:sqlserver://ybl49nyf62.database.windows.net:1433;database=BallGame;";
-			String strUser = "user=matsuzhi@ybl49nyf62;";
+			String strUser = "user=matsuzhi;";
 			String strPass = "password=AshnYuk2";
 			String connUrl = strConn + strUser + strPass;
 			Connection con = d.connect(connUrl, new Properties());
 
 			Statement stmt = con.createStatement();
 
-			String SQL = "SELECT userID FROM T001_ユーザーマスター";
+			String SQL = "SELECT * FROM dbo.T001_ユーザーマスター";
 
 			ResultSet rs = stmt.executeQuery(SQL);
 
@@ -54,7 +54,8 @@ public class SampmleServlet extends HttpServlet {
 			stmt.close();
 		}
 		catch(Exception e){
-			e.printStackTrace();
+			//
+			System.out.println(e);
 		}
 
 		// TODO Auto-generated method stub
