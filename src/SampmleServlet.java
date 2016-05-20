@@ -34,7 +34,7 @@ public class SampmleServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html><head></head><body>");
 		try{
-			//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			//Driver d = (Driver)Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 			//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			String strConn = "jdbc:sqlserver://ybl49nyf62.database.windows.net:1433;database=BallGame;";
