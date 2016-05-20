@@ -1,13 +1,9 @@
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Properties;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.microsoft.sqlserver.jdbc;
 
 /**
  * Servlet implementation class SampmleServlet
@@ -48,7 +43,7 @@ public class SampmleServlet extends HttpServlet {
 			//String connUrl = strConn + strUser + strPass;
 			String connUrl = "jdbc:sqlserver://ybl49nyf62.database.windows.net:1433;database=BallGame;user=matsuzhi@ybl49nyf62;password=AshnYuk2;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 			//Connection con = d.connect(connUrl, new Properties());
-			Connection con = DriverManger.getConnection(connUrl);
+			Connection con = DriverManager.getConnection(connUrl);
 
 			Statement stmt = con.createStatement();
 
