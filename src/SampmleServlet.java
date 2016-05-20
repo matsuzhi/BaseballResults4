@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Driver;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
@@ -38,15 +39,16 @@ public class SampmleServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html><head></head><body>");
 		try{
-			//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			Driver d = (Driver)Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			//Driver d = (Driver)Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 			//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			String strConn = "jdbc:sqlserver://ybl49nyf62.database.windows.net:1433;database=BallGame;";
 			String strUser = "user=matsuzhi;";
 			String strPass = "password=AshnYuk2";
 			//String connUrl = strConn + strUser + strPass;
 			String connUrl = "jdbc:sqlserver://ybl49nyf62.database.windows.net:1433;database=BallGame;user=matsuzhi@ybl49nyf62;password=AshnYuk2;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-			Connection con = d.connect(connUrl, new Properties());
+			//Connection con = d.connect(connUrl, new Properties());
+			Connection con = DriverManger.getConnection(connUrl);
 
 			Statement stmt = con.createStatement();
 
