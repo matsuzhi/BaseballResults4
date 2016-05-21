@@ -1,3 +1,4 @@
+package servlet;
 
 
 import java.io.IOException;
@@ -71,8 +72,8 @@ public class login extends HttpServlet {
 		//ログイン成功時、セッションを設定
 		//（失敗時はすぐに破棄）
 		HttpSession session = request.getSession();
-		String forwardPath;
-		if(errorMsg == ""){
+
+		if(errorMsg == ""){	//ログイン成功時
 
 			//ログイン成功時は、登録されたユーザー情報を渡す
 			//今はユーザーIDだけ
@@ -81,9 +82,11 @@ public class login extends HttpServlet {
 			session.setAttribute("UserProfile", userProf);
 
 			//ログイン成功時はダッシュボードにフォワード（リダイレクトの方がいいな）
-			forwardPath = "/Dashboard.jsp";
+			String redirectPath;
+			redirectPath = "Dashboard.jsp";
+			response.sendRedirect(redirectPath);
 
-		}else{
+		}else{				//ログイン失敗時
 
 			//ログイン失敗時はセッション破棄
 			session.invalidate();
@@ -92,12 +95,13 @@ public class login extends HttpServlet {
 			request.setAttribute("errorMsg", errorMsg);
 
 			//ログイン失敗時はログイン画面にフォワード
-			forwardPath = "/login.jsp";
+			String forwardPath;
+			forwardPath = "login.jsp";
+			//次のページに飛ばす（ログイン成功時はリダイレクトのほうがいい）
+			RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
+			dispatcher.forward(request, response);
 		}
 
-		//次のページに飛ばす（ログイン成功時はリダイレクトのほうがいい）
-		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
-		dispatcher.forward(request, response);
 	}
 
 }
