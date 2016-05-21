@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,6 +57,14 @@ public class SampmleServlet extends HttpServlet {
 			}
 			rs.close();
 			stmt.close();
+
+			String forwardPath;
+			forwardPath = "login.jsp";
+			//LoginInput inputData = new LoginInput();
+			//request.setAttribute("Input",  inputData);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
+			dispatcher.forward(request, response);
+
 		}
 		catch(Exception e){
 			//
