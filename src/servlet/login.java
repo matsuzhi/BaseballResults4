@@ -41,8 +41,8 @@ public class login extends HttpServlet {
 		//ユーザーID、パスワード、エラーメッセージは空白
 		String forwardPath;
 		forwardPath = "login.jsp";
-		LoginInput inputData = new LoginInput();
-		request.setAttribute("Input",  inputData);
+		//LoginInput inputData = new LoginInput();
+		//request.setAttribute("Input",  inputData);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
 		dispatcher.forward(request, response);
 	}

@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.LoginInput" %>
-<% LoginInput input = (LoginInput) request.getAttribute("Input");
-	String errorMsg;
-	if(input==null){
+<% String errorMsg;
+	if(request.getAttribute("errorMsg") == null){
 		errorMsg = "";
-	}else{
-		errorMsg = input.geterrorMsg();
 	}
-%>
+	else{
+		errorMsg = (String)request.getAttribute("errorMsg");
+	}
 
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,24 +33,26 @@
 	div{
 		background: #FFFFFF;
 		width: 300px;
-		height: 150px;
+		height: 200px;
 		margin:0 auto 0 auto;
 		padding 10px auto 10px auto;
 	}
 </style>
-<title>login</title>
+<title>ユーザー登録</title>
 </head>
 <body>
 <div>
-<%= errorMsg %>
-<form action="login" method="POST">
-	ユーザーID<br />
+<%= errorMsg %><br />
+<form action="entry" method="POST">
+	メールアドレスを入力してください。<br />
+	<input type="text" name="mailAddr"><br />
+	ご希望のユーザーIDを入力してください。<br />
 	<input type="text" name="userId"><br />
-	パスワード<br />
+	ご希望のパスワードを入力してください。<br />
 	<input type="password" name="userPass"><br /><br />
-	<input type="submit" value="ログイン">
+	<input type="submit" value="ユーザー登録">
 </form>
-<a href="entry">ユーザー登録はこちら</a>
+<a href="login.jsp">ログイン画面に戻る</a>
 </div>
 </body>
 </html>
