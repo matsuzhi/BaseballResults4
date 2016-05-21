@@ -51,7 +51,7 @@ public class login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//フォームから受け取った値をセットえ
+		//フォームから受け取った値をセット
 		String userId = request.getParameter("userId");
 		String userPass = request.getParameter("userPass");
 		String errorMsg;
