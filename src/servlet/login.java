@@ -55,7 +55,7 @@ public class login extends HttpServlet {
 		//フォームから受け取った値をセット
 		String userId = request.getParameter("userId");
 		String userPass = request.getParameter("userPass");
-		String errorMsg;
+		String errorMsg;	//エラーメッセージの有無で成否を判定
 
 		//フォームから受け取ったIDとパスワードを渡して、一致するか確認する
 		LoginInput inputData = new LoginInput();
