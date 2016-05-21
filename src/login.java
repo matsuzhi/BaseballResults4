@@ -39,7 +39,7 @@ public class login extends HttpServlet {
 		//Getで来た時はログイン画面に飛ばす。
 		//ユーザーID、パスワード、エラーメッセージは空白
 		String forwardPath;
-		forwardPath = "/login.jsp";
+		forwardPath = "login.jsp";
 		LoginInput inputData = new LoginInput();
 		request.setAttribute("Input",  inputData);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
