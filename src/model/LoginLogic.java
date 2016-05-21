@@ -38,6 +38,7 @@ public class LoginLogic {
 			pstmt.setString(1, userId);
 			pstmt.setString(2, hashPass);
 
+			//レコードセットをセットして、件数を取得。１ならログイン成功
 			ResultSet rs = pstmt.executeQuery();
 			int matchedRecordCount = 0;
 			while(rs.next()){
@@ -47,7 +48,6 @@ public class LoginLogic {
 			rs.close();
 			pstmt.close();
 			con.close();
-
 
 
 			//ユーザーIDとパスワードが一致する組が存在したらログイン成功
