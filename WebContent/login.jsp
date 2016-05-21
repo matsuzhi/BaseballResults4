@@ -36,7 +36,6 @@
 		width: 300px;
 		height: 150px;
 		margin:0 auto 0 auto;
-		padding 10px auto 10px auto;
 	}
 </style>
 <title>login</title>
