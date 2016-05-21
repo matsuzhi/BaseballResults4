@@ -17,7 +17,7 @@ import model.UserProfile;
 /**
  * Servlet implementation class login
  */
-@WebServlet(description = "ログインがあったらユーザーページに飛ぶ", urlPatterns = { "/login" })
+@WebServlet("/login")
 public class login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
