@@ -42,11 +42,11 @@ public class EntryLogic {
 			PreparedStatement pstmt = con.prepareStatement(checkSQL);
 			pstmt.setString(1, userId);
 
-			//レコードセットをセットして、件数を取得。１ならログイン成功
+			//入力されたユーザーIDがすでにユーザーマスターに登録されていないかチェック
 			ResultSet rs = pstmt.executeQuery();
 			int matchedRecordCount = 0;
 			while(rs.next()){
-				matchedRecordCount = rs.getInt("CNT");
+				matchedRecordCount += rs.getInt("CNT");
 			}
 
 			if(matchedRecordCount > 0 ){
