@@ -40,8 +40,6 @@ public class login extends HttpServlet {
 		//ユーザーID、パスワード、エラーメッセージは空白
 		String forwardPath;
 		forwardPath = "login.jsp";
-		//LoginInput inputData = new LoginInput();
-		//request.setAttribute("Input",  inputData);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
 		dispatcher.forward(request, response);
 	}
@@ -82,7 +80,7 @@ public class login extends HttpServlet {
 
 			//ログイン成功時はダッシュボードにフォワード（リダイレクトの方がいいな）
 			String redirectPath;
-			redirectPath = "Dashboard.jsp";
+			redirectPath = "Members/MainMenu";
 			response.sendRedirect(redirectPath);
 
 		}else{				//ログイン失敗時

@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class MainMenu
  */
-@WebServlet("/MainMenu")
+@WebServlet("/Members/MainMenu")
 public class MainMenu extends HttpServlet {
 	private static final long serialVersionUID = 4L;
 
@@ -27,9 +28,16 @@ public class MainMenu extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    //Getで飛んでくるのはログイン時
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		String forwardPath;
+		forwardPath = "Dashboard.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
+		dispatcher.forward(request, response);
+
 	}
 
 	/**
@@ -43,7 +51,7 @@ public class MainMenu extends HttpServlet {
 		String action =  request.getParameter("action");
 		switch (action){
 		case "logout":
-			redirectPath = "login";
+			redirectPath = "../login";
 			HttpSession session = request.getSession();
 			session.invalidate();
 			response.sendRedirect(redirectPath);
